@@ -1,0 +1,19 @@
+# Maven specific files
+target/
+*.log
+*.tmp
+*.bak
+*.swp
+*.idea/
+*.iml
+*.class
+
+# Eclipse specific files
+.project
+.classpath
+.settings/
+bin/
+
+# General OS files
+.DS_Store
+Thumbs.db
