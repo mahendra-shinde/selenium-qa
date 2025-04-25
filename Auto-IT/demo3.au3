@@ -1,11 +1,11 @@
-#include <Constants.au3>
-Local $iAnswer = MsgBox(BitOR($MB_YESNO, $MB_SYSTEMMODAL), "AutoIt Example", "This script will run Notepad, type in some text and then quit.  Do you want to run it?")
+; AutoIt script to open Firefox and go to wikipedia.org
 
-; MsgBox(0,"Your Response","Your response was " & $iAnswer)
-If $iAnswer = $IDYES Then
-  MsgBox(0, "Your Response", "You chose YES!")
-  Run("notepad.exe")
-ElseIf $iAnswer = $IDNO Then
-  MsgBox(0, "Your Response", "You chose NO!")
-  Run("calc.exe")
+Local $sURL = "https://practice.expandtesting.com/upload"
+Local $sFirefoxPath = "C:\Program Files\Mozilla Firefox\firefox.exe"
+
+; Check if Firefox exists
+If FileExists($sFirefoxPath) Then
+    Run('"' & $sFirefoxPath & '"  ' & $sURL)
+Else
+    MsgBox(16, "Error", "Firefox not found at: " & $sFirefoxPath)
 EndIf
