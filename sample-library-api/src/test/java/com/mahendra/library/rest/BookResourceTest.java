@@ -88,7 +88,7 @@ class BookResourceTest {
 		given().baseUri(BASE_URL).port(port)
 		.accept(ContentType.JSON)
 		.when().get("/api/books/10")
-		.then().statusCode(404).body("Error",containsString("not found"));
+		.then().statusCode(404).body("Error",containsString("not exists"));
 	}
 	
 	/**
@@ -107,7 +107,12 @@ class BookResourceTest {
 	 */
 	@Test
 	void testSave() {
-		fail("Not yet implemented");
+		given().baseUri(BASE_URL).port(port)
+		.contentType(ContentType.JSON)
+		.body("{\"title\":\"Java Advance\",\"author\":\"Mahendra\",\"category\":\"Programming\",\"status\":\"A\"}")
+		.when().post("/api/books/")
+		.then().statusCode(201) // 201 Created
+		.body("title", equalTo("Java Advance"));
 	}
 
 	/**
@@ -126,7 +131,12 @@ class BookResourceTest {
 	 */
 	@Test
 	void testUpdate() {
-		fail("Not yet implemented");
+		given().baseUri(BASE_URL).port(port)
+		.contentType(ContentType.JSON)
+		.body("{\"title\":\"Let Us C\",\"author\":\"Mahendra Shinde\",\"category\":\"Programming\",\"status\":\"A\"}")
+		.when().put("/api/books/1")
+		.then().statusCode(200) // 200 OK
+		.body("author", equalTo("Mahendra Shinde"));
 	}
 
 	/**
@@ -144,7 +154,9 @@ class BookResourceTest {
 	 */
 	@Test
 	void testDelete() {
-		fail("Not yet implemented");
+		given().baseUri(BASE_URL).port(port)
+		.when().delete("/api/books/2")
+		.then().statusCode(200); // 200 OK
 	}
 
 }

@@ -44,7 +44,7 @@ public class BookResource {
 	@ApiOperation("Save new book")
 	public ResponseEntity<Book> save(Book book){
 		Book newBook = dao.save(book);
-		return new ResponseEntity<>(newBook, HttpStatus.CREATED);
+		return new ResponseEntity<>(newBook, HttpStatus.CREATED); // 201
 	}
 
 	@PutMapping(produces = "application/json", consumes="application/json", value = "/{ID}")
