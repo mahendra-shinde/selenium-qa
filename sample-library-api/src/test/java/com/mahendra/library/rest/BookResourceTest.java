@@ -88,7 +88,7 @@ class BookResourceTest {
 		given().baseUri(BASE_URL).port(port)
 		.accept(ContentType.JSON)
 		.when().get("/api/books/10")
-		.then().statusCode(404).body("Error",containsString("not exists"));
+		.then().statusCode(404).body("Error",containsString("doesn't exist"));
 	}
 	
 	/**
@@ -111,7 +111,7 @@ class BookResourceTest {
 		.contentType(ContentType.JSON)
 		.body("{\"title\":\"Java Advance\",\"author\":\"Mahendra\",\"category\":\"Programming\",\"status\":\"A\"}")
 		.when().post("/api/books/")
-		.then().statusCode(200); // 201 Created
+		.then().statusCode(201); // 201 Created
 		
 	}
 
